@@ -1,0 +1,73 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+@{ 
+    string s = null;
+    if (ViewBag.Amount > 20000)
+    {
+        s = "Eligible for Credit Card";
+    }
+    else
+    {
+        s = "Not Eligible";
+    }
+
+}
+<body>
+     
+    <table>
+        <tr>
+            <td>Customer Id</td>
+            <td>@ViewBag.CustId</td>
+        </tr>
+        <tr>
+            <td>Customer Name</td>
+            <td>@ViewBag.CustName</td>
+        </tr>
+        <tr>
+            <td>Account Type</td>
+            <td>
+                <ul>
+                    @foreach (var type in ViewBag.Type)
+                    { 
+                        <li>@type</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Amount</td>
+            <td>@ViewBag.Amount</td>
+        </tr>
+        <tr>
+            <td>Action</td>
+            <td>@s</td>
+        </tr>
+        <tr>
+            <td>Home Loan</td>
+            <td>
+                @if (ViewBag.Amount > 25000)
+                {
+                    <span class="text-success">Eligible For Home Loan</span>
+                }
+                else
+                {
+                    <span class="text-danger">Not Eligible</span>
+                }
+            </td>
+        </tr>
+
+
+    </table>
+    
+</body>
+</html>
