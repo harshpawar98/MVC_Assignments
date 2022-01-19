@@ -1,0 +1,138 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        table, th, td {        
+            border: 1px solid black;
+            border-collapse: collapse;
+        }   
+    </style>
+</head>
+@{ 
+    int amt = ViewBag.Amount;
+    int on=0; int tw = 0; int th = 0; int fr = 0; int fv = 0; int s = 0; int sn=0;
+    int[] amarr = new int[7];
+    for (int i = 1; i <= 7; i++)
+    {
+        if (amt >= 1000)
+        {
+            on = (amt / 1000);
+            amt = amt % 1000;
+            amarr[0] = on * 1000;
+        }
+        else if (amt >= 500)
+        {
+            tw = (amt / 500);
+            amt = amt % 500;
+            amarr[1] = tw * 500;
+        }
+        else if (amt >= 100)
+        {
+            th = (amt / 100);
+            amt = amt % 100;
+            amarr[2] = th * 100;
+        }
+        else if (amt >= 50)
+        {
+            fr = (amt / 50);
+            amt = amt % 50;
+            amarr[3] = fr * 50;
+        }
+        else if (amt >= 10)
+        {
+            fv = (amt / 10);
+            amt = amt % 10;
+            amarr[4] = fv * 10;
+        }
+        else if (amt >= 5)
+        {
+            s = (amt / 5);
+            amt = amt % 5;
+            amarr[5] = s * 5;
+        }
+        else if (amt >= 1)
+        {
+            sn = (amt / 1);
+            amt = amt % 1;
+            amarr[6] = sn * 1;
+        }
+    }
+
+}
+<body>
+    <h1>Currency Denominations</h1>
+    
+    <table>
+        <tr>
+            <th>Denomination</th>
+            <th>Count</th>
+            <th>Amount</th>
+        </tr>
+        <tr>
+            @if (on > 0)
+            {
+                <td>1000</td>
+                <td>@on</td>
+                <td>@amarr[0]</td>
+            }
+        </tr>
+        <tr>
+            @if (tw > 0)
+            {
+                <td>500</td>
+                <td>@tw</td>
+                <td>@amarr[1]</td>
+            }
+        </tr>
+        <tr>
+            @if (th > 0)
+            {
+                <td>100</td>
+                <td>@th</td>
+                <td>@amarr[2]</td>
+            }
+        </tr>
+        <tr>
+            @if (fr > 0)
+            {
+                <td>50</td>
+                <td>@fr</td>
+                <td>@amarr[3]</td>
+            }
+        </tr>
+        <tr>
+            @if (fv > 0)
+            {
+                <td>10</td>
+                <td>@fv</td>
+                <td>@amarr[4]</td>
+            }
+        </tr>
+        <tr>
+            @if (s > 0)
+            {
+                <td>5</td>
+                <td>@s</td>
+                <td>@amarr[5]</td>
+            }
+        </tr>
+        <tr>
+            @if (sn > 0)
+            {
+                <td>1</td>
+                <td>@sn</td>
+                <td>@amarr[6]</td>
+            }
+        </tr>
+    </table>
+
+</body>
+</html>
