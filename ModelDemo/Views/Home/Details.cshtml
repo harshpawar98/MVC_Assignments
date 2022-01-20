@@ -1,0 +1,43 @@
+﻿@model ModelDemo.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <style>
+        table, tr, td {
+        border:1px solid black;
+        border-collapse:collapse
+        }
+    </style>
+</head>
+<body>
+    <h1>Product Details</h1>
+    
+    <table>
+        <tr>
+            <th>Id</th>
+            @*<td>@ViewBag.MatchProduct.productid</td>*@
+            <td>@Model.productid</td>
+
+        </tr>
+        <tr>
+            <th>Name</th>
+            @*<td>@ViewBag.MatchProduct.productname</td>*@
+              <td>@Model.productname</td>
+        </tr>
+        <tr>
+              <th>Price</th>
+              @*<td>@ViewBag.MatchProduct.price</td>*@
+              <td>@Model.price</td>
+        </tr>
+
+            </table>
+        </body>
+        </html>

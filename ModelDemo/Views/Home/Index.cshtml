@@ -1,0 +1,51 @@
+﻿@model List<ModelDemo.Models.Product>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        table, td, tr {
+            border:1px solid black;
+            border-collapse:collapse
+        }
+    </style>
+</head>
+<body>
+    <h1>Products</h1>
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Price</td>
+        </tr>
+               @* @foreach (var prd in ViewBag.Products)
+                {
+                    <tr>
+                        <td><a href="/home/details/@prd.productid">@prd.productid</a></td>
+                        <td>@prd.productname</td>
+                        <td>@prd.price</td>
+                    </tr>
+                }
+            *@
+
+        @foreach (var prd in Model)
+        {
+            <tr>
+                <td><a href="/home/details/@prd.productid">@prd.productid</a></td>
+                <td>@prd.productname</td>
+                <td>@prd.price</td>
+            </tr>
+        }
+    </table>
+
+    <a href="@Url.Action("create","home")">Create Products</a>
+</body>
+</html>

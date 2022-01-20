@@ -1,0 +1,34 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    <h1>Create Product</h1>
+    <form action="/home/create" method="post">
+        <div class="Form-Group">
+            <label>Id</label>
+            <input type="text" class="Form-Control" name="productid" />
+        </div>
+        <div class="Form-Group">
+            <label>Name</label>
+            <input type="text" class="Form-Control" name="productname" />
+        </div>
+        <div class="Form-Group">
+            <label>Price</label>
+            <input type="text" class="Form-Control" name="price" />
+        </div>
+        <div class="Form-Group">
+            <input type="submit" class="btn btn-success" />
+        </div>
+
+    </form>
+</body>
+</html>
