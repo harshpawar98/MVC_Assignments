@@ -1,0 +1,43 @@
+﻿@model List<EFDBFirstApproachDemo.Models.Employee>
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        table, th, td, tr {
+            border: 1px solid black;
+            border-collapse: collapse
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee Details</h1>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Department Id</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>@e.EmpId</td>
+                <td>@e.EmpName</td>
+                <td>@e.DeptId</td>
+                <td>
+                    |<a href="/Employee/Update/@e.EmpId">Update</a>|
+                    |<a href="/Employee/Details/@e.EmpId">Details</a>|
+                    |<a href="/Employee/Delete/@e.EmpId">Delete</a>|
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/Employee/Create">Add</a>
+</body>
+</html>

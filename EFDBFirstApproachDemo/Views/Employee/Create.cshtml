@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    <h1>Add Employee</h1>
+    <form action="/Employee/Create" method="post">
+        <div class="form-group">
+            <label>Id:</label>
+            <input type="text" class="form-control" name="EmpId" />
+        </div>
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" class="form-control" name="EmpName" />
+        </div>
+        <div class="form-group">
+            <label>DeptId:</label>
+            @*<input type="text" class="form-control" name="DeptId" />   *@
+            <select name="DeptId">
+                <option value="">Please select</option>
+                @foreach (var d in ViewBag.Department)
+                { 
+                    <option value="@d.DeptId">@d.DeptName</option>
+                }
+            </select>
+        </div>
+        <div>
+            <input type="submit" />
+            <a href="/Employee/Index">Back</a>
+        </div>
+
+    </form>
+</body>
+</html>

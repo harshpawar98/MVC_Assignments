@@ -1,0 +1,34 @@
+﻿@model EFDBFirstApproachDemo.Models.Employee
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h1>Delete Employee</h1>
+    <form action="/Employee/Delete/" method="post">
+        <div>
+            <label>Id</label>
+            <input type="text" name="EmpId" value="@Model.EmpId" />
+        </div>
+        <div>
+            <label>Name</label>
+            <input type="text" name="EmpName" value="@Model.EmpName" />
+        </div>
+        <div>
+            <label>DeptID</label>
+            <input type="text" name="DeptId" value="@Model.DeptId" />
+        </div>
+        <div>
+            <button type="submit">Delete</button>
+            <a href="/Employee/Index">Back</a>
+        </div>
+    </form>
+</body>
+</html>

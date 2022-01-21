@@ -1,0 +1,41 @@
+﻿@model EFDBFirstApproachDemo.Models.Employee
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Update</title>
+</head>
+<body>
+    <h1>Update Employee</h1>
+    <form action="/Employee/Update/" method="post">
+        <div>
+            <label>Id</label>
+            <input type="text" name="EmpId" value="@Model.EmpId" />
+        </div>
+        <div>
+            <label>Name</label>
+            <input type="text" name="EmpName" value="@Model.EmpName" />
+        </div>
+        <div>
+            <label>DeptID</label>
+            @*<input type="text" name="DeptId" value="@Model.DeptId" />*@
+            <select name="DeptId">@*static dropdown list*@
+                <option value="@Model.DeptId">@Model.DeptId</option>
+                <option value="1111">1111</option>
+                <option value="1212">1212</option>
+                <option value="1313">1313</option>
+                <option value="1414">1414</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Update</button>
+            <a href="/Employee/Index">Back</a>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿@model List<EFDBFirstApproachDemo.Models.Department>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        table, th, td, tr {
+            border:1px solid black;
+            border-collapse:collapse
+        }
+    </style>
+</head>
+<body>
+    <h1>Department Details</h1>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        @foreach (var d in Model)
+        { 
+            <tr>
+                <td>@d.DeptId</td>
+                <td>@d.DeptName</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
