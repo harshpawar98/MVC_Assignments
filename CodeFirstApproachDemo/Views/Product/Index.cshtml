@@ -1,0 +1,42 @@
+﻿@model List<CodeFirstApproachDemo.Models.Product>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        table, th, td, tr {
+            border:1px solid black;
+            border-collapse:collapse
+        }
+    </style>
+</head>
+<body>
+    <h1>Products Details</h1>
+    <table>
+        <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Brand Id</th>
+            <th>Category Id</th>
+        </tr>
+        <tr>
+            @foreach (var p in Model)
+            { 
+                <td>@p.ProductId</td>
+                <td>@p.ProductName</td>
+                <td>@p.Quantity</td>
+                <td>@p.BrandId</td>
+                <td>@p.CatId</td>
+            }
+        </tr>
+    </table>
+    
+</body>
+</html>
