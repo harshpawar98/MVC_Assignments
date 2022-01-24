@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    @*Layout = "~/Views/Shared/_LayoutPage1.cshtml";*@
+}
+
+
+<h2>**Welcome in Contact**</h2>
+@{
+    ViewBag.Message = "Welcome in ContactPage";
+}
+
+@{
+    ViewBag.Title = "Contact";
+    ViewBag.Data = new List<string>() { "Head-Office-2525-02025", "Pune-2545-8545" };
+    Html.RenderPartial("FirstPartialView");
+}

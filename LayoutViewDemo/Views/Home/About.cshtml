@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "About";
+    @*Layout = "~/Views/Shared/_LayoutPage1.cshtml";*@
+}
+
+<h2>**Welcome in AboutPage**</h2>
+@{
+    ViewBag.Message = "Welcome in AboutPage";
+}
+
+@{
+    ViewBag.Title = "Products";
+    ViewBag.Data = new List<string>() {"Mobile","Laptop","CPU","Router" };
+    Html.RenderPartial("FirstPartialView");
+ }
+
+@section sidebaroptions{
+    <a href="#" class="list-group-item text-white" style="background-color:transparent">Plans</a>
+    <a href="#" class="list-group-item text-white" style="background-color:transparent">About</a>
+}
