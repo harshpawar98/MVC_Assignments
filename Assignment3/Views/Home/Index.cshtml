@@ -1,0 +1,53 @@
+﻿@model Assignment3.Models.Data
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/umd/popper.js"></script>
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <style>
+        .field-validation-error, .validation-summary-errors {
+            color:red;
+        }
+        
+    </style>
+</head>
+<body>
+    <form class="container" action="/home/create" method="post">
+        <div class="form-group">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" name="name" />
+            @Html.ValidationMessageFor(temp=>temp.Name)
+        </div>
+        <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" />
+            @Html.ValidationMessageFor(temp => temp.Email)
+        </div>
+        <div class="form-group">
+            <label class="form-label">Mobile</label>
+            <input type="tel" class="form-control" name="mobile" />
+            @Html.ValidationMessageFor(temp => temp.Mobile)
+        </div>
+        <div class="form-group">
+            <label class="form-label">Hobbies</label>
+            <input type="checkbox" name="hobbies" value="Photography " />Photography
+            <input type="checkbox" name="hobbies" value="Gardening " />Gardening
+            <input type="checkbox" name="hobbies" value="Dance" />Dance
+            <input type="checkbox" name="hobbies" value="Hiking" />Hiking
+            <input type="checkbox" name="hobbies" value="Painting " />Painting
+        </div>
+        @Html.ValidationSummary() @*Validation summary*@
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+        </div>
+    </form>
+</body>
+</html>

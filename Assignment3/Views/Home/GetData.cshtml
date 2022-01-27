@@ -1,0 +1,40 @@
+﻿@model List<Assignment3.Models.Data>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetData</title>
+    <style>
+        table, th, td, tr {
+            border:2px solid black;
+            border-collapse:collapse
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+        
+            @foreach (var d in Model)
+            { 
+                <tr>
+                    <td>@d.DataId</td>
+                    <td>@d.Name</td>
+                    <td>@d.Email</td>
+                    <td>@d.Mobile</td>
+                </tr>
+            }
+        
+    </table>
+</body>
+</html>
