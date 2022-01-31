@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/umd/popper.js"></script>
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <style>
+        .field-validation-error, .validation-summary-errors {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-black navbar-dark">
+        <a class="navbar-brand" href="#">Company</a>
+        <div class="col-8">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home/index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Employee/getEmpData">Employee</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Department/getDeptData">Department</a>
+                </li>
+            </ul>
+            <div>
+                Welcome to @User.Identity.Name
+            </div>
+        </div>
+
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12" style="min-height:610px">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</body>
+</html>

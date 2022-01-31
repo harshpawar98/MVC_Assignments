@@ -1,0 +1,25 @@
+﻿@model List<IdentityDemo.Models.Department>
+
+@{
+  
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Department Details</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var d in Model)
+        {
+            <tr>
+                <td>@d.DeptId</td>
+                <td>@d.DeptName</td>
+            </tr>
+        }
+    </tbody>
+</table>
