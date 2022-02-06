@@ -1,0 +1,165 @@
+﻿@model List<RestaurantMenuAssignment.Models.Menu>
+
+@{
+    ViewBag.Title = "getMenuData";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+
+<h3 style="text-align: center; margin-top: 5px; color:white">Menus Details</h3>
+
+<a class="btn btn-success" href="/Menu/CreateMenu">Create Menu</a>
+<table class="table mt-2">
+    <thead class="thead-dark; text-center">
+        <tr style="background-color:silver">
+            <th scope="col">
+                @if (ViewBag.iconclass == "fa-sort-desc")
+                {
+                    <a href="/Menu/getMenuData?SortColumn=Menu_Id&IconClass=fa-sort-asc&PageNo=@ViewBag.pageno" style="text-decoration:none;color:inherit">Id</a>
+                    if (ViewBag.sortcolumn == "Menu_Id")
+                    {
+                        <i class="fa @ViewBag.iconclass"></i>
+                    }
+                }
+                else
+                {
+                    <a href="/Menu/getMenuData?SortColumn=Menu_Id&IconClass=fa-sort-desc&PageNo=@ViewBag.pageno" style="text-decoration: none; color: inherit">Id</a>
+                    if (ViewBag.sortcolumn == "Menu_Id")
+                    {
+                        <i class="fa @ViewBag.iconclass"></i>
+                    }
+                }
+            </th>
+            <th scope="col">
+                @if (ViewBag.iconclass == "fa-sort-desc")
+                {
+                    <a href="/Menu/getMenuData?SortColumn=Menu_Name&IconClass=fa-sort-asc&PageNo=@ViewBag.pageno" style="text-decoration:none;color:inherit">Menu</a>
+                    if (ViewBag.sortcolumn == "Menu_Name")
+                    {
+                        <i class="fa @ViewBag.iconclass"></i>
+                    }
+                }
+                else
+                {
+                    <a href="/Menu/getMenuData?SortColumn=Menu_Name&IconClass=fa-sort-desc&PageNo=@ViewBag.pageno" style="text-decoration: none; color: inherit">Menu</a>
+                    if (ViewBag.sortcolumn == "Menu_Name")
+                    {
+                        <i class="fa @ViewBag.iconclass"></i>
+                    }
+                }
+            </th>
+            <th scope="col">Photo</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        @foreach (var mlist in Model)
+        {
+            <tr id="row_@mlist.Menu_Id" style="color:white;background-color: aliceblue; background: linear-gradient(to top,rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%">
+                <td>@mlist.Menu_Id</td>
+                <td>@mlist.Menu_Name</td>
+                <td><img src="data:image;base64,@mlist.Photo" width="150px" /></td>
+                <td>
+                    <a class="btn btn-success" href="/Menu/UpdateMenu/@mlist.Menu_Id">Update</a>
+                    <a class="btn btn-danger" href="#" onclick="ConfirmDelete(@mlist.Menu_Id)">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*Delete*@
+
+<input type="hidden" id="hiddenMenu_Id" />
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Delete Menu</h3>
+            </div>
+            <div class="modal-body">
+                <h6>Are you sure ? You want to Delete Menu</h6>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-secondary" onclick="cancel()" data-dismiss="modal">Cancel</a>
+                <a href="#" class="btn btn-danger" onclick="Delete()">Confirm</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var ConfirmDelete = function (Menu_Id) {
+
+        $("#hiddenMenu_Id").val(Menu_Id);
+        $("#myModal").modal('show');
+
+    }
+
+    var Delete = function () {
+
+        $("#loaderDiv").show();
+
+        var Menu_Id = $("#hiddenMenu_Id").val();
+
+        $.ajax({
+
+            type: "POST",
+            url: "/Menu/DeleteMenu",
+            data: { menuid: Menu_Id },
+            success: function (result) {
+                $("#loaderDiv").hide();
+                $("#myModal").modal("hide");
+                $("#row_" + Menu_Id).remove();
+
+            }
+
+        })
+
+    }
+    var cancel = function () {
+        $("#myModal").modal("hide");
+    }
+
+</script>
+
+@*Pagination*@
+
+@{
+    int PrevPageNo = ViewBag.pageno - 1;
+    if (PrevPageNo <= 0)
+    {
+        PrevPageNo = 1;
+    }
+    int NextPageNo = ViewBag.pageno + 1;
+    if (NextPageNo > ViewBag.noofpages)
+    {
+        NextPageNo = ViewBag.noofpages;
+    }
+}
+
+<ul class="pagination justify-content-center">
+    <li class="page-item">
+        <a class="page-link" href="/Menu/getMenuData?PageNo=@PrevPageNo">Prev</a>
+    </li>
+
+    @for (int i = 0; i < ViewBag.noofpages; i++)
+    {
+        if (ViewBag.pageno == (i + 1))
+        {
+            <li class="page-item active">
+                <a class="page-link" href="/Menu/getMenuData?PageNo=@(i + 1)">@(i + 1)</a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item">
+                <a class="page-link" href="/Menu/getMenuData?PageNo=@(i + 1)">@(i + 1)</a>
+            </li>
+        }
+    }
+    <li class="page-item">
+        <a class="page-link" href="/Menu/getMenuData?PageNo=@NextPageNo">Next</a>
+    </li>
+</ul>

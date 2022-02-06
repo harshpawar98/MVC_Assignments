@@ -1,0 +1,49 @@
+﻿@model RestaurantMenuAssignment.Models.Restaurant
+
+@{
+
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<head>
+    <style>
+        table {
+            border-:1px solid black;
+            border-collapse:collapse
+        }
+    </style>
+</head>
+
+<div class="card" style="width:450px; margin-left:550px;margin-top:30px">
+    <img class="card-img-top" src="data:image;base64,@Model.Menu.Photo">
+    <div class="card-body">
+        <table>
+
+            <tr>
+                <th>Restaurant Name:</th>
+                <td>@Model.Restaurant_Name</td>
+            </tr>
+            <tr>
+                <th>Address:</th>
+                <td>@Model.Address</td>
+            </tr>
+            <tr>
+                <th>City:</th>
+                <td>@Model.City</td>
+            </tr>
+            <tr>
+                <th>Mobile:</th>
+                <td>@Model.Mobile</td>
+            </tr>
+            <tr>
+                <th>Famous Menu:</th>
+                <td>
+                    @if (Model.Menu != null)
+                    {
+                        @Model.Menu.Menu_Name
+                    }
+                </td>
+            </tr>
+        </table>
+        <a class="btn btn-dark" href="/Restaurant/getRestaurantData" style="margin-left:360px;margin-top:10px">Back</a>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿@model RestaurantMenuAssignment.Models.Menu
+@{
+    ViewBag.Title = "CreateMenu";
+    Layout = "~/Views/Shared/_LayoutPage4.cshtml";
+}
+
+<head>
+    <style>
+        .form-label {
+            font-weight: bold;
+            color:white
+        }
+        .field-validation-error {
+            color: red;
+        }
+    </style>
+</head>
+
+<div class="card" style="width: 400px; height: auto; margin-left: 570px; margin-top: 100px; background: linear-gradient(to top,rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%">
+    <div class="card-body">
+        <h3 style="text-align:center;color:white" class="card-title">Create Menu</h3>
+        <form action="/Menu/CreateMenu" method="post" enctype="multipart/form-data">       
+                <div class="form-group">
+                    <label class="form-label">Menu Name</label>
+                    <input type="text" class="form-control" name="Menu_Name" placeholder="Enter Menu Name" />
+                    @Html.ValidationMessageFor(temp => temp.Menu_Name)
+
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Photo</label> <br />
+                    <input type="file" class="form-control-file" name="Photo" style="color:white"/>
+                </div>
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-success">Create</button>
+                    <a class="btn btn-danger" href="/Menu/getMenuData">Cancel</a>
+                </div>
+        </form>
+    </div>
+</div>
